@@ -9,9 +9,10 @@ ENV PWD="masterkey"
 RUN apt-get update && \
     apt-get install -qy --no-install-recommends \
         curl \
+        ca-certificates \
         libncurses5 \
         libtommath1 && \
-    mkdir /home/firebird && \
+    mkdir -p /home/firebird && \
     cd /home/firebird/ && \
     curl -L -o FirebirdSS.amd64.tar.gz -L "${FBURL}" && \
     tar --strip=1 -xzvf FirebirdSS.amd64.tar.gz && \
@@ -31,10 +32,12 @@ RUN apt-get update && \
     rm -rf /home/firebird && \
     apt-get purge -qy --auto-remove \
         curl \
+        ca-certificates \
         libncurses5 \
         libtommath1
-    
 
 VOLUME ["/firebird"]
+
+EXPOSE 3050/tcp
 
 CMD ["/usr/local/firebird/bin/fbguard"]
