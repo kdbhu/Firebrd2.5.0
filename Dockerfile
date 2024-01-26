@@ -34,10 +34,9 @@ RUN apt-get update && \
         curl \
         ca-certificates \
         libncurses5 \
-        libtommath1
+        libtommath1 
 
+RUN mkdir /data && chown firebird:firebird /data
 VOLUME ["/firebird"]
 
 EXPOSE 3050/tcp
-
-CMD ["/usr/local/firebird/bin/fbguard"]
