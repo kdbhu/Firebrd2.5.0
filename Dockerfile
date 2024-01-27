@@ -35,6 +35,6 @@ RUN apt-get update && \
         ca-certificates 
 
 RUN mkdir /data && chown firebird:firebird /data
-VOLUME ["/firebird"]
+VOLUME ["/data"]
 
 EXPOSE 3050/tcp
