@@ -32,12 +32,11 @@ RUN apt-get update && \
     rm -rf /home/firebird && \
     apt-get purge -qy --auto-remove \
         curl \
-        ca-certificates && \
-    chmod +x /changepwd.sh
+        ca-certificates
 
 RUN mkdir /data && chown firebird:firebird /data
 VOLUME ["/data"]
 
 EXPOSE 3050/tcp
 
-CMD service firebird restart
+CMD service firebird restart && bash
