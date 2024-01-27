@@ -6,8 +6,6 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV FBURL=http://sourceforge.net/projects/firebird/files/firebird-linux-amd64/2.5-Release/FirebirdSS-2.5.0.26074-0.amd64.tar.gz/download
 ENV PWD="masterkey"
 
-ADD changepwd.sh changepwd.sh
-
 RUN apt-get update && \
     apt-get install -qy --no-install-recommends \
         curl \
@@ -42,6 +40,4 @@ VOLUME ["/data"]
 
 EXPOSE 3050/tcp
 
-ADD entrypoint.sh entrypoint.sh
-
-ENTRYPOINT [ "/entrypoint.sh" ]
+CMD service firebird restart
