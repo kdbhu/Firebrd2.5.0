@@ -39,4 +39,4 @@ VOLUME ["/data"]
 
 EXPOSE 3050/tcp
 
-CMD service firebird restart && bash
+CMD service firebird restart
