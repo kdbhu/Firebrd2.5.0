@@ -32,9 +32,7 @@ RUN apt-get update && \
     rm -rf /home/firebird && \
     apt-get purge -qy --auto-remove \
         curl \
-        ca-certificates \
-        libncurses5 \
-        libtommath1 
+        ca-certificates 
 
 RUN mkdir /data && chown firebird:firebird /data
 VOLUME ["/firebird"]
